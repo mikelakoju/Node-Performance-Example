@@ -18,3 +18,4 @@ Node Performance Example
 * `pm2 stop 4`: to stop cluster 4
 * `pm2 start 4`: to start cluster 4
 * `pm2 monit`: Gives a fancy Dashboard
+* `pm2 reload server`: This ensures zero down time restart. It restarts the clusters one by one that way keeping some avaiable to users.
