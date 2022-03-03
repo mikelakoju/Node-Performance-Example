@@ -29,8 +29,12 @@ app.get('/timer',(req, res)=>{
 
 if (cluster.isMaster){
     console.log('Master has been started...');
-    cluster.fork();
-    cluster.fork();
+    // using the os module to detect how many cores we have available on the system 
+    const NUM_WORKERS = os.cpus().length;
+    for (let i = 0; i < NUM_WORKERS; i++) {
+        cluster.fork();
+    }
+   
 } else {
     console.log('Worker process started.');
     app.listen(3000);
